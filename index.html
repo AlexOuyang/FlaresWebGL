@@ -93,12 +93,17 @@
 				var s = 250;
 
 				var cube = new THREE.CubeGeometry( s, s, s );
-				var material = new THREE.MeshPhongMaterial( { ambient: 0x333333, color: 0xffffff, specular: 0xffffff, shininess: 50 } );
+				var cubeMaterial = new THREE.MeshBasicMaterial({wireframe: true,color: 'blue'});
+				var sphere = new THREE.SphereGeometry(s, s, s);
+				var sphereMaterial = new THREE.MeshPhongMaterial( { ambient: 0x333333, color: 0xffffff, specular: 0xffffff, shininess: 50 } );
 
 
 				for ( var i = 0; i < 3000; i ++ ) {
-
-					var mesh = new THREE.Mesh( cube, material );
+					if( i%2==0){
+						var mesh = new THREE.Mesh( cube, cubeMaterial );
+						}else{
+						var mesh = new THREE.Mesh( sphere, cubeMaterial );
+						}
 
 					mesh.position.x = 8000 * ( 2.0 * Math.random() - 1.0 );
 					mesh.position.y = 8000 * ( 2.0 * Math.random() - 1.0 );
